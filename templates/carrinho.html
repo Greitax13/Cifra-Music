@@ -6,14 +6,10 @@
 
     <div class="cart-container">
         <div id="cartItems" class="total"></div>
-
-        <div class="buttons-car">
-            <button class="btn-clear" onclick="clearCart()">Limpar Carrinho</button>
-            <a id="btn-whatsapp" target="_blank" class="btn-success"
-                href="https://wa.me/5599999999999?text=${encodeURIComponent(message)}">
-                Comprar
-                <img src="https://i.postimg.cc/PJFtpp7d/icon-whats.png" width="20px" style="align-items: center;">
-            </a>
+        <div class="centrar-carrinho">
+            <p id="carrinho-vazio-none"></p>
+            <img id="imagem-vazia" src="https://i.postimg.cc/LX1wLZgM/carrinho-vazio-removebg-preview.png" width="250px"
+                style="margin-bottom: 50px;">
         </div>
     </div>
 
@@ -74,12 +70,16 @@
         const totalSpan = document.getElementById("cartTotal");
         const totalSpan2 = document.getElementById("cartTotal2");
 
+        const carrinhomensagem = document.getElementById("carrinho-vazio-none");
+        const imagemVazia = document.getElementById("imagem-vazia");
 
         let total = 0;
 
 
+
         cart.forEach((item, index) => {
             total += item.price * item.qty;
+
 
 
 
@@ -96,16 +96,18 @@
                 <div class="price">
                     ${precoBRL(item.price * item.qty)}
                 </div>
-
+                
             </div>
         `;
             //Mensagem do WhatsApp
             message += `${item.name} \n`;
         });
 
-        if (list.innerHTML === "") {
-            list.innerHTML = "<p>O carrinho está vazio.</p>";
+        if (cart.length === 0) {
+            carrinhomensagem.textContent = "O carrinho está vazio.";
+            // list.textContent = carrinhomensagem;
         }
+
 
         const btnExcluir = document.getElementById("btn-excluir-produto");
 
@@ -139,10 +141,10 @@
 
 
 
-    function clearCart() {
+    /*function clearCart() {
         localStorage.removeItem("cart");
         window.location.reload();
-    }
+    }*/
 </script>
 <!--href="https://chat.whatsapp.com/DF13H0zFc9V9nNTLHIuiAF${item.name} !-->
 
