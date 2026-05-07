@@ -103,6 +103,10 @@
             message += `${item.name} \n`;
         });
 
+        if (list.innerHTML === "") {
+            list.innerHTML = "<p>O carrinho está vazio.</p>";
+        }
+
         const btnExcluir = document.getElementById("btn-excluir-produto");
 
         document.getElementById("cartItems").addEventListener("click", (e) => {

@@ -314,7 +314,8 @@ ul {
 }
 
 .btn-excluir-produto {
-    background-color: #000000;
+    background-color: #00000000;
+    cursor: pointer;
     /* width: 1px; */
 
 }
